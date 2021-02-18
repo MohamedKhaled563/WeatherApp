@@ -1,0 +1,35 @@
+{
+  "images" : [
+    {
+      "filename" : "closeup-shot-of-a-window-on-a-rainy-day-raindrops-rolling-down-the-window-1.jpg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "closeup-shot-of-a-window-on-a-rainy-day-raindrops-rolling-down-the-window.jpg",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "FreeVector-Rain-Background.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}
