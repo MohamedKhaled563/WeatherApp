@@ -39,6 +39,9 @@ class WeatherViewController: UIViewController {
         player?.play()
     }
     
+    @IBAction func reportButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToReport", sender: self)
+    }
     
     
 }
