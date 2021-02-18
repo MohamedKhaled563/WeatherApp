@@ -118,9 +118,16 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXQ-ZE-BWt">
-                                        <rect key="frame" x="74" y="430.33333333333331" width="240" height="222.33333333333331"/>
+                                        <rect key="frame" x="74" y="430.33333333333331" width="240" height="145.33333333333331"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Climate expected in the coming days " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WYo-km-dYT">
+                                        <rect key="frame" x="32.333333333333343" y="585.66666666666663" width="323.66666666666663" height="67"/>
+                                        <color key="backgroundColor" name="labelsBackground"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                        <color key="textColor" name="weatherColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jk0-bV-8K0">
                                         <rect key="frame" x="101.33333333333333" y="663" width="185.33333333333337" height="185"/>
                                         <constraints>
@@ -161,6 +168,7 @@
                         <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
                         <outlet property="descriptionLabel" destination="IIA-Pw-S1F" id="GIe-kb-cSO"/>
                         <outlet property="humidityLabel" destination="f2H-5w-R0V" id="RMN-tb-7OR"/>
+                        <outlet property="reportButtonTitleLabel" destination="WYo-km-dYT" id="WsI-jU-NB4"/>
                         <outlet property="temperatureLabel" destination="w9o-tW-03D" id="mF4-vV-JxK"/>
                         <segue destination="4xu-un-ZUm" kind="presentation" identifier="goToReport" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="PcD-Ue-Sgo"/>
                     </connections>
@@ -178,35 +186,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I55-eT-oyR">
-                                <rect key="frame" x="40" y="316.33333333333331" width="348" height="555.66666666666674"/>
+                                <rect key="frame" x="40" y="483" width="348" height="389"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ync-6f-a0M">
-                                        <rect key="frame" x="0.0" y="0.0" width="348" height="555.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="348" height="389"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6w-SA-nzM">
-                                                <rect key="frame" x="0.0" y="0.0" width="348" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="348" height="15.666666666666666"/>
                                                 <color key="backgroundColor" name="popupLabels"/>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="hyP-zI-Afo">
-                                                <rect key="frame" x="0.0" y="28" width="348" height="36"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hyP-zI-Afo">
+                                                <rect key="frame" x="0.0" y="15.666666666666686" width="348" height="36"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nsh-ap-PuE">
-                                                        <rect key="frame" x="0.0" y="0.0" width="90.666666666666671" height="36"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="Aj8-0H-PE8"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="0.0" width="116" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" name="popUpBackgound"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byV-cy-grh">
-                                                        <rect key="frame" x="90.666666666666671" y="0.0" width="135.66666666666663" height="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byV-cy-grh">
+                                                        <rect key="frame" x="116" y="0.0" width="116" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" name="popUpBackgound"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hum." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63A-fi-3IN">
-                                                        <rect key="frame" x="226.33333333333329" y="0.0" width="121.66666666666666" height="36"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hum." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63A-fi-3IN">
+                                                        <rect key="frame" x="232" y="0.0" width="116" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                         <color key="textColor" name="popUpBackgound"/>
                                                         <nil key="highlightedColor"/>
@@ -215,7 +220,7 @@
                                                 <color key="backgroundColor" name="popupLabels"/>
                                             </stackView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WLR-bc-oIG">
-                                                <rect key="frame" x="0.0" y="64.000000000000028" width="348" height="491.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="51.666666666666629" width="348" height="337.33333333333331"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ForeginTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForeginTableViewCell" id="Ift-HT-hBu" customClass="ForeginTableViewCell" customModule="Clima">
@@ -225,23 +230,23 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="348" height="60.333332061767578"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="OE4-eY-Mbj">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="OE4-eY-Mbj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="348" height="60.333333333333336"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32k-pY-HF0">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="157" height="60.333333333333336"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="60.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                             <color key="textColor" name="popupLabels"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzU-M8-eUC">
-                                                                            <rect key="frame" x="181" y="0.0" width="71" height="60.333333333333336"/>
+                                                                            <rect key="frame" x="124" y="0.0" width="100" height="60.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                             <color key="textColor" name="popupLabels"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAr-7e-DdK">
-                                                                            <rect key="frame" x="276" y="0.0" width="72" height="60.333333333333336"/>
+                                                                            <rect key="frame" x="248" y="0.0" width="100" height="60.333333333333336"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                                             <color key="textColor" name="popupLabels"/>
                                                                             <nil key="highlightedColor"/>
@@ -274,7 +279,7 @@
                                 <color key="backgroundColor" name="popUpBackgound"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ync-6f-a0M" secondAttribute="trailing" id="3ZJ-Js-tfY"/>
-                                    <constraint firstItem="O6w-SA-nzM" firstAttribute="height" secondItem="I55-eT-oyR" secondAttribute="height" multiplier="0.05" id="LOM-Ux-dgn"/>
+                                    <constraint firstItem="O6w-SA-nzM" firstAttribute="height" secondItem="I55-eT-oyR" secondAttribute="height" multiplier="0.04" id="LOM-Ux-dgn"/>
                                     <constraint firstAttribute="bottom" secondItem="ync-6f-a0M" secondAttribute="bottom" id="WNw-FJ-kd0"/>
                                     <constraint firstItem="ync-6f-a0M" firstAttribute="top" secondItem="I55-eT-oyR" secondAttribute="top" id="gGf-IS-90J"/>
                                     <constraint firstItem="ync-6f-a0M" firstAttribute="leading" secondItem="I55-eT-oyR" secondAttribute="leading" id="xvu-2m-kW9"/>
@@ -285,7 +290,7 @@
                         <color key="backgroundColor" name="labelsBackground"/>
                         <constraints>
                             <constraint firstItem="I55-eT-oyR" firstAttribute="leading" secondItem="YAn-d9-HLL" secondAttribute="leading" constant="40" id="K0Q-cj-LRC"/>
-                            <constraint firstItem="I55-eT-oyR" firstAttribute="height" secondItem="dUU-iG-69Q" secondAttribute="height" multiplier="0.6" id="KCf-VU-KnZ"/>
+                            <constraint firstItem="I55-eT-oyR" firstAttribute="height" secondItem="dUU-iG-69Q" secondAttribute="height" multiplier="0.42" id="KCf-VU-KnZ"/>
                             <constraint firstItem="I55-eT-oyR" firstAttribute="bottom" secondItem="YAn-d9-HLL" secondAttribute="bottom" constant="-20" id="QuP-nm-eq8"/>
                             <constraint firstItem="YAn-d9-HLL" firstAttribute="trailing" secondItem="I55-eT-oyR" secondAttribute="trailing" constant="40" id="aeL-Gi-r3O"/>
                         </constraints>
@@ -307,19 +312,19 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="newspaper" catalog="system" width="128" height="108"/>
         <namedColor name="labelsBackground">
-            <color red="0.63906567510000001" green="0.59520822679999996" blue="0.59520822679999996" alpha="0.4871194599" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63899999856948853" green="0.59500002861022949" blue="0.59500002861022949" alpha="0.4869999885559082" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="popUpBackgound">
-            <color red="0.8549470227" green="0.78789235430000004" blue="0.78789235430000004" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.85500001907348633" green="0.78799998760223389" blue="0.78799998760223389" alpha="0.85000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="popupLabels">
-            <color red="0.20499876140000001" green="0.16129076480000001" blue="0.1147014871" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20499999821186066" green="0.16099999845027924" blue="0.11500000208616257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="reportButtonColor">
-            <color red="0.8549470227" green="0.78789235430000004" blue="0.78789235430000004" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.85500001907348633" green="0.78799998760223389" blue="0.78799998760223389" alpha="0.75" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="upperButtonsColor">
-            <color red="0.2324776053" green="0.18886587020000001" blue="0.13389405609999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23199999332427979" green="0.18899999558925629" blue="0.13400000333786011" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="weatherColor">
             <color red="0.17700000107288361" green="0.14200000464916229" blue="0.090999998152256012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

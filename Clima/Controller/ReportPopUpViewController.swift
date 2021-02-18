@@ -10,10 +10,12 @@ import UIKit
 
 class ReportPopUpViewController: UIViewController {
     
+    var weatherReportManager = WeatherReportManager()
+    var searchedLatitide: Double?
+    var searchedLongitude: Double?
+    
     var dataArray = [
-        ["Day 1", "14.3", "32"],
-        ["Day 2", "142.3", "2"],
-        ["Day 3", "144.3", "5"],
+        ["No.", "--", "--"],
     ]
     
     @IBOutlet weak var popupView: UIView!
@@ -22,14 +24,24 @@ class ReportPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         tableView.dataSource = self
         tableView.delegate = self
-                
+        weatherReportManager.delegate = self
+        
         popupView.layer.cornerRadius = popupView.frame.size.width / 10
         popupView.clipsToBounds = true
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapped(gestureRecognizer:)))
                 view.addGestureRecognizer(tapRecognizer)
                 tapRecognizer.delegate = self
+        
+        if let latitude = searchedLatitide{
+            if let longitude = searchedLongitude{
+                weatherReportManager.performRequest(longitude: longitude, latitude: latitude)
+            }
+        }
+        
+        
     }
     @objc func tapped(gestureRecognizer: UITapGestureRecognizer) {
         self.dismiss(animated: true, completion: nil)
@@ -40,11 +52,14 @@ class ReportPopUpViewController: UIViewController {
 
 extension ReportPopUpViewController: UIGestureRecognizerDelegate{
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.view == tableView{
-            return false
-        } else {
+        if touch.view == self.view {
             return true
+        } else {
+            return false
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -68,3 +83,24 @@ extension ReportPopUpViewController: UITableViewDataSource, UITableViewDelegate{
     
     
 }
+
+
+// MARK:- WeatherReportManagerDelegate
+
+extension ReportPopUpViewController: WeatherReportManagerDelegate{
+    func didUpdateWeatherReport(_ weatherReportManager: WeatherReportManager, weatherReport: WeatherReportData) {
+        print("Enterd did updata wearther function")
+        dataArray.removeAll()
+        for i in 0...7{
+            let dayString = "Day \(i + 1)"
+            let tempString = String(format: "%.1f", weatherReport.daily[i].temp.day)
+            let humString = String(format: "%d", weatherReport.daily[i].humidity)
+            dataArray.append([dayString, tempString, humString])
+        }
+        tableView.reloadData()
+    }
+    
+    
+}
+
+

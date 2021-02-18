@@ -12,9 +12,12 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var citySearchTextField: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var reportButtonTitleLabel: UILabel!
     
     var weatherManager = WeatherManager()
     var locationManager = CLLocationManager()
+    var searchedLongitude: Double?
+    var searchedLatitide: Double?
     var player: AVAudioPlayer?
 
     override func viewDidLoad() {
@@ -22,6 +25,7 @@ class WeatherViewController: UIViewController {
         
         humidityLabel.roundCorners()
         cityLabel.roundCorners()
+        reportButtonTitleLabel.roundCorners()
         
         citySearchTextField.delegate = self
         weatherManager.delegate = self
@@ -42,7 +46,11 @@ class WeatherViewController: UIViewController {
     @IBAction func reportButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "goToReport", sender: self)
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let ReportVC = segue.destination as! ReportPopUpViewController
+        ReportVC.searchedLongitude = searchedLongitude
+        ReportVC.searchedLatitide = searchedLatitide
+    }
     
 }
 
@@ -85,6 +93,8 @@ extension WeatherViewController: WeatherManagerDelegate{
             self.cityLabel.text = weather.cityName
             self.humidityLabel.text = String(format: "H:%d°", weather.humidity)
             self.descriptionLabel.text = weather.description
+            self.searchedLatitide = weather.latitude
+            self.searchedLongitude = weather.longitude
         }
     }
     func didFailWithError(_ weatherManager: WeatherManager, error: Error) {
@@ -99,10 +109,11 @@ extension WeatherViewController: CLLocationManagerDelegate{
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last{
             locationManager.stopUpdatingLocation()
-            let latitude = location.coordinate.latitude
-            let longitude = location.coordinate.longitude
-            print("latitude = \(latitude), longitude = \(longitude)")
-            weatherManager.fetchWeather(withLatitude: latitude, andLongitude: longitude)
+            searchedLatitide = location.coordinate.latitude
+            searchedLongitude = location.coordinate.longitude
+            if let latiude = searchedLatitide, let longitude = searchedLongitude{
+                weatherManager.fetchWeather(withLatitude: latiude, andLongitude: longitude)
+            }
         }
         
         //        print(locations)
@@ -120,4 +131,3 @@ extension UILabel{
         self.clipsToBounds = true
     }
 }
-
